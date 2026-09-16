@@ -3,9 +3,9 @@ spring:
     name: Workout-app
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/WorkoutAppDiplom
-    username: postgres
-    password: Barsik
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/WorkoutAppDiplom}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:Barsik}
   jpa:
     properties:
       hibernate:
