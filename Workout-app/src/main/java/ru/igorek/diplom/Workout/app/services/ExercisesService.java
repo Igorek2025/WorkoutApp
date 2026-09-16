@@ -4,12 +4,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.igorek.diplom.Workout.app.entity.ExercisesDb;
 import ru.igorek.diplom.Workout.app.models.Exercises;
 import ru.igorek.diplom.Workout.app.repositories.ExercisesRepository;
-import ru.igorek.diplom.Workout.app.util.ExercisesNotFoundException;
+import ru.igorek.diplom.Workout.app.exeptions.ExercisesNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,19 +24,19 @@ public class ExercisesService {
         this.modelMapper = modelMapper;
     }
 
-    public List<Exercises> findAll(){
+    public List<ExercisesDb> findAll(){
         return exercisesRepository.findAll();
     }
 
     @Transactional
-    public void save(Exercises exercises) {
-        exercisesRepository.save(exercises);
+    public void save(ExercisesDb exercisesDb) {
+        exercisesRepository.save(exercisesDb);
     }
 
     @Transactional
-    public void updateExercises(UUID id, Exercises Newexercises) {
-        Exercises exercises = exercisesRepository.findById(id).orElseThrow(ExercisesNotFoundException::new);
-        modelMapper.map(Newexercises, exercises);
+    public void updateExercises(UUID id, ExercisesDb NewexercisesDb) {
+        ExercisesDb exercisesDb = exercisesRepository.findById(id).orElseThrow(ExercisesNotFoundException::new);
+        modelMapper.map(NewexercisesDb, exercisesDb);
     }
 
     @Transactional

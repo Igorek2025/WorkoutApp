@@ -23,5 +23,4 @@ public class WorkoutAppApplication {
 
         return mapper;
     }
-
 }

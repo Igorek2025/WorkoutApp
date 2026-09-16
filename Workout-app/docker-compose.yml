@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: exercises
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Barsik
+
+  app:
+    container_name: springboot
+    image: springboot
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/WorkoutAppDiplom
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Barsik
