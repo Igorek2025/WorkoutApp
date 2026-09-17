@@ -18,6 +18,6 @@ services:
       - postgres
 
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/WorkoutAppDiplom
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/WorkoutAppDiplom
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: Barsik
