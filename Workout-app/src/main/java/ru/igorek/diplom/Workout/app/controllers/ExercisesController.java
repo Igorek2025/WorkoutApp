@@ -1,5 +1,6 @@
 package ru.igorek.diplom.Workout.app.controllers;
 
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,8 +34,8 @@ public class ExercisesController {
     }
 
 
-    @PostMapping()
-    public ResponseEntity<HttpStatus> create (@RequestBody ExercisesDb exercisesDb, BindingResult bindingResult){
+    @PostMapping("/create")
+    public ResponseEntity<HttpStatus> create (@Valid @RequestBody ExercisesDb exercisesDb, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             StringBuilder errorMsg = new StringBuilder();
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
