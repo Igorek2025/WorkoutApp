@@ -1,16 +1,11 @@
 package ru.igorek.diplom.Workout.app.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import ru.igorek.diplom.Workout.app.models.Person;
 
 import java.util.UUID;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "exercises")
 public class ExercisesDb {
@@ -32,6 +27,10 @@ public class ExercisesDb {
 
     @Column(name = "linkvideo")
     private String linkVideo;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    private Person owner;
 
     public UUID getId() {
         return id;
@@ -71,5 +70,13 @@ public class ExercisesDb {
 
     public void setLinkVideo(String linkVideo) {
         this.linkVideo = linkVideo;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 }

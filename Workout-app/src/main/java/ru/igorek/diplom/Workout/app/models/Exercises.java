@@ -13,4 +13,5 @@ public class Exercises {
     private String musclegroup;
     private String description;
     private String linkVideo;
+    private Person owner;
 }

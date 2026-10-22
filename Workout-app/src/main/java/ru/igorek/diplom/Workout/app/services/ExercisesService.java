@@ -28,6 +28,10 @@ public class ExercisesService {
         return exercisesRepository.findAll();
     }
 
+    public ExercisesDb findById(UUID id){
+        return  exercisesRepository.findById(id).orElse(null);
+    }
+
     @Transactional
     public void save(ExercisesDb exercisesDb) {
         exercisesRepository.save(exercisesDb);
